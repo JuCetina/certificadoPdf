@@ -1,23 +1,15 @@
 <?php
-//Instrucciones para cargar el componente dompdf
+
+use App\Helpers\Pdf;
+use App\Core\Views\Template;
 
 // somewhere early in your project's loading, require the Composer autoloader
 // see: http://getcomposer.org/doc/00-intro.md
 require '../vendor/autoload.php';
 
-// disable DOMPDF's internal autoloader if you are using Composer
-define('DOMPDF_ENABLE_AUTOLOAD', false);
+$data = array('name' => 'Juan Pérez', 'course' => 'Laravel 5');
 
-// include DOMPDF's default configuration
-require_once '../vendor/dompdf/dompdf/dompdf_config.inc.php';
+$html = Template::render('certificate', $data);
 
-$html =
-  '<html><body>'.
-  '<h1>Titulo del PDF</h1>'.
-  '<p>Aprendiendo a usar Composer</p>'.
-  '</body></html>';
+Pdf::render('certificado', $html);
 
-$dompdf = new DOMPDF();
-$dompdf->load_html($html);
-$dompdf->render();
-$dompdf->stream("ejemplo.pdf");
