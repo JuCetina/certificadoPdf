@@ -1,0 +1,25 @@
+{
+	"name": "jucetina/soloComposer",
+	"description": "Ejemplo de uso de Composer",
+	"type": "project",
+	"authors": [
+		{
+			"name": "Juliette Cetina",
+			"role": "estudiante"
+		}
+	],
+
+	"require":
+	{
+		"php": ">=5.3.0",
+		"dompdf/dompdf": "dev-master"
+	},
+
+	"autoload":
+	{
+		"psr-4":
+		{
+
+		}
+	}
+}
